@@ -21,7 +21,7 @@ export default function Home() {
                         text='Coming this summer'
                         variant='success'
                         link='warzone-two/generator'
-                        disabled={true} />
+                        disabled={false} />
                 </Col>
                 <Col xl={3} lg={4} md={6}>
                     <GeneratorCard
