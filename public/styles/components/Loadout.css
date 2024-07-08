@@ -14,3 +14,9 @@
 #tactical {
     margin-right: 25px;
 }
+
+.perk {
+    background: #fff;
+    border-radius: 4px;
+    padding-bottom: 100%;
+ }

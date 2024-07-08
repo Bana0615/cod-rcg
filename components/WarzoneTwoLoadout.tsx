@@ -1,5 +1,8 @@
+import { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+//Helpers
 import { implodeObject } from '../helpers/implodeObject';
+//Styles
 import '../public/styles/components/Loadout.css';
 
 type ClassPerks = {
@@ -30,14 +33,30 @@ type ClassProps = {
 function WarzoneTwoLoadout(props: ClassProps) {
     let p_attachments = implodeObject(props.p_attachments);
     let s_attachments = implodeObject(props.s_attachments);
-    let perks = implodeObject(props.perks);
+    const [perks, setPerks] = useState(null);
+    const [primary, setPrimary] = useState(null);
+
+    useEffect(() => {
+        (async () => {
+            await fetch('/api/warzone-two/perks')
+                .then(response => response.json())
+                .then(perks => setPerks(perks));
+
+            await fetch('/api/modern-warfare-three/primary')
+                .then(response => response.json())
+                .then(primary => setPrimary(primary));
+        })();
+    }, []);
+
+    console.log('primary', primary);
+    console.log('data21', perks);
 
     return (
         <>
             <Container id='random-class' className='shadow-lg p-3 mb-5 bg-body rounded'>
                 <Row id='weapons'>
                     <Col>
-                        <span className='label'>Primary:</span> {props.primary} <br />
+                        <span className='label'>Primary:</span> {primary} <br />
                         <span className='label'>Primary Attachments:</span> {p_attachments}
                     </Col>
                     <Col>

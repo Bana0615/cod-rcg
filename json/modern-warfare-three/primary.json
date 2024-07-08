@@ -1,0 +1,59 @@
+{
+    "AR": {
+        "0": "BP50",
+        "1": "BAL-27",
+        "2": "SVA 545",
+        "3": "MTZ-556",
+        "4": "RAM-7",
+        "5": "HOLGER 556",
+        "6": "MCW",
+        "7": "DG-56",
+        "8": "FR 5.56"
+    },
+    "BR" :{
+        "0": "SOA SUBVERTER ",
+        "1": "BAS-B",
+        "2": "SIDEWINDER",
+        "3": "MTZ-762"
+    },
+    "SMG" :{
+        "0": "FJX HORUS",
+        "1": "SUPERI 46",
+        "2": "RAM-9",
+        "3": "AMR9",
+        "4": "RIVAL-9",
+        "5": "HRM-9",
+        "6": "STRIKER 9",
+        "7": "STRIKER",
+        "8": "WSP-9",
+        "9": "WSP SWARM"
+    },
+    "SHOTGUN" : {
+        "0" : "RECLAIMER 18",
+        "1" : "LOCKWOOD 680",
+        "2" : "HAYMAKER",
+        "3" : "RIVETER"
+    },
+    "LMG" : {
+        "0" : "BRUEN MK9",
+        "1" : "TAQ EVOLVERE",
+        "2" : "PULEMYOT 762",
+        "3" : "DG-58 LSW",
+        "4" : "TAQ ERADICATOR",
+        "5" : "HOLGER 26"
+    },
+    "MR": {
+        "0" : "KAR98K",
+        "1" : "KVD ENFORCER",
+        "2" : "MCW 6.8",
+        "3" : "DM56",
+        "4" : "MTZ INTERCEPTOR"
+    },
+    "SNIPER": {
+        "0" : "XRK STALKER",
+        "1" : "MORS",
+        "2" : "KATT-AMR",
+        "3" : "LONGBOW",
+        "4" : "KV INHIBITOR"
+    }
+}
