@@ -1,7 +1,6 @@
 import { randomNumber } from './randomNumber';
 
-export async function fetchWeapon(type: string = '', game: string = '') {
-    type = type === '' ? getType() : type;
+export async function fetchEquipment(type: string, game: string = '') {
     game = game === '' ? getGame() : game;
 
     const response = await fetch(`/api/${game}/${type}`);
@@ -30,22 +29,4 @@ function getGame() {
     }
 
     return game;
-}
-
-function getType() {
-    let type: string;
-    const randomNum = randomNumber(0, 6);
-
-    switch (randomNum) {
-        case 1:
-        case 3:
-        case 5:
-            type = 'secondary';
-            break;
-        default:
-            type = 'primary';
-            break;
-    }
-
-    return type;
 }

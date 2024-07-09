@@ -4,3 +4,9 @@ export type Weapon = {
     game: string;
     no_attach?: boolean;
 }
+
+export type Equipment = {
+    name: string;
+    type: string;
+    game?: string;
+}
