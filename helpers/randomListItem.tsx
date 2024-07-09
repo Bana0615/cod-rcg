@@ -1,4 +1,4 @@
-export function randomListItem(perks: Object): string {
+export function randomListItem(perks: Object): any {
     // Get all the values of the object
     const values = Object.values(perks);
 

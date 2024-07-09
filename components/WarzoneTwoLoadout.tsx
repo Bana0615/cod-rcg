@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 //Helpers
 import { implodeObject } from '../helpers/implodeObject';
+import { fetchWeapon } from '../helpers/fetchWeapon';
+import { fetchPerks } from '../helpers/fetchPerks';
 //Styles
 import '../public/styles/components/Loadout.css';
 
@@ -31,21 +33,27 @@ type ClassProps = {
 }
 
 function WarzoneTwoLoadout(props: ClassProps) {
+    const weapon = { name: '', type: '', game: '', no_attach: false };
     let p_attachments = implodeObject(props.p_attachments);
     let s_attachments = implodeObject(props.s_attachments);
     const [perks, setPerks] = useState(null);
-    const [primary, setPrimary] = useState(null);
+    const [primary, setPrimary] = useState(weapon);
+    const [secondary, setSecondary] = useState(weapon);
 
     useEffect(() => {
-        (async () => {
-            await fetch('/api/warzone-two/perks')
-                .then(response => response.json())
-                .then(perks => setPerks(perks));
+        const fetchData = async () => {
+            try {
+                const perks = await fetchPerks();
+                setPerks(perks);
 
-            await fetch('/api/modern-warfare-three/primary')
-                .then(response => response.json())
-                .then(primary => setPrimary(primary));
-        })();
+                const primaryWeapon = await fetchWeapon('primary');
+                setPrimary(primaryWeapon);
+            } catch (error: any) {
+                console.error(error.message); // Handle errors centrally
+            }
+        };
+
+        fetchData();
     }, []);
 
     console.log('primary', primary);
@@ -56,8 +64,15 @@ function WarzoneTwoLoadout(props: ClassProps) {
             <Container id='random-class' className='shadow-lg p-3 mb-5 bg-body rounded'>
                 <Row id='weapons'>
                     <Col>
-                        <span className='label'>Primary:</span> {primary} <br />
-                        <span className='label'>Primary Attachments:</span> {p_attachments}
+                        <span className='label'>Primary:</span> {primary.name} - {primary.game} <br />
+                        {primary.no_attach ? (
+                            // No attachments case: Display "No Attachments" or a custom message
+                            <><span className='label'>Primary Attachments: </span> No Attachments</>
+                        ) : (
+                            // Attachments case: Display the existing logic for attachments
+                            <><span className='label'>Primary Attachments:</span> {p_attachments}</>
+                        )}
+
                     </Col>
                     <Col>
                         <span className='label'>Secondary:</span> {props.secondary} <br />

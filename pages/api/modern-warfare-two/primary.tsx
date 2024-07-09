@@ -1,4 +1,4 @@
-import primaryList from '../../../json/modern-warfare-three/primary.json';
+import primaryList from '../../../json/modern-warfare-two/primary.json';
 import { randomListItem } from '../../../helpers/randomListItem';
 import { Weapon } from '@/app/lib/definitions';
 
